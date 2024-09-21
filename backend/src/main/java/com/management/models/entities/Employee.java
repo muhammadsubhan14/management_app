@@ -2,6 +2,7 @@ package com.management.models.entities;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,12 +13,20 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tbl_employee")
 public class Employee implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(name = "member_name", length = 50)
     private String name;
+    
+    @Column(name = "member_position", length = 50)
     private String position;
+
+    @Column(name = "reports_to", length = 50)
     private String reportsTo;
 
     @Lob
