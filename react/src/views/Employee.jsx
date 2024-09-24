@@ -95,6 +95,13 @@ export default function Employee() {
           <div className="text-center col-span-3">No employees found.</div>
         )}
       </div>
+      <div className="flex justify-center items-center">
+        <Link to={"/add-employee"}>
+          <button className="btn btn-primary mt-3 flex justify-center items-center">
+            Add Employee
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

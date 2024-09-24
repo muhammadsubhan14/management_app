@@ -4,6 +4,7 @@ import Login from "./views/Login";
 import Register from "./views/Register";
 import Employee from "./views/Employee";
 import EmployeeId from "./views/EmployeeId";
+import AddEmployee from "./views/AddEmployee";
 
 
 export const router = createBrowserRouter([
@@ -26,5 +27,9 @@ export const router = createBrowserRouter([
     {
       path: "/employee/:id",
       element: <EmployeeId/>
+    },
+    {
+      path: "/add-employee",
+      element: <AddEmployee/>
     }
   ]);
