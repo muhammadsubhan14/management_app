@@ -18,7 +18,8 @@ export default function EmployeeId() {
         );
         setEmployee(response.data);
       } catch (error) {
-        setError(error.message);
+        const errorMessage = error.response?.data?.message || error.message;
+        setError(errorMessage);
       } finally {
         setLoading(false);
       }
@@ -38,21 +39,22 @@ export default function EmployeeId() {
     }
 
     const formData = new FormData();
-    formData.append("image", selectedImage);
+    formData.append("picture", selectedImage);
+    formData.append("name", employee.name);
+    formData.append("position", employee.position);
+    formData.append("reportsTo", employee.reportsTo);
 
     try {
-      await axios.post(
-        `http://localhost:8080/api/employee/${id}/upload-image`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      await axios.put(`http://localhost:8080/api/employee/${id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       alert("Image uploaded successfully!");
+      fetchEmployee();
     } catch (error) {
-      setUploadError(error.message);
+      const errorMessage = error.response?.data?.message || error.message;
+      setUploadError(errorMessage);
     }
   };
 
@@ -85,7 +87,7 @@ export default function EmployeeId() {
       <div className="max-w-lg w-full rounded-lg shadow-lg overflow-hidden bg-white">
         <img
           className="w-full object-cover"
-          src={employee.avatar || "https://tailwindcss.com/img/card-top.jpg"}
+          src={employee.picture || "https://tailwindcss.com/img/card-top.jpg"}
           alt={employee.name}
         />
         <div className="p-6">
@@ -96,7 +98,7 @@ export default function EmployeeId() {
             {employee.position}
           </p>
           <p className="text-gray-500 text-sm text-center">
-            <span className="font-bold">Reports To : </span>{" "}
+            <span className="font-bold">Reports To: </span>
             {employee.reportsTo}
           </p>
         </div>

@@ -68,13 +68,7 @@ export default function Employee() {
               <div className="flex items-center p-4">
                 <div className="avatar">
                   <div className="mask mask-squircle h-16 w-16">
-                    <img
-                      src={
-                        employee.avatar ||
-                        "https://img.daisyui.com/images/profile/demo/2@94.webp"
-                      }
-                      alt="Avatar"
-                    />
+                    <img src={employee.avatar} alt="photo" />
                   </div>
                 </div>
                 <div className="ml-4">

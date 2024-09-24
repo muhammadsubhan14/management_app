@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.management.models.entities.Employee;
+import com.management.models.entities.EmployeeEntity;
 
-public interface employeeRepo extends CrudRepository<Employee, Long> {
+public interface employeeRepo extends CrudRepository<EmployeeEntity, Long> {
 
-    List<Employee> findByNameContains(String name);
+    List<EmployeeEntity> findByNameContains(String name);
 }

@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tbl_employee")
-public class Employee implements Serializable {
+public class EmployeeEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -32,10 +32,10 @@ public class Employee implements Serializable {
     @Lob
     private byte[] picture;
 
-    public Employee() {
+    public EmployeeEntity() {
     }
 
-    public Employee(Long id, String name, byte[] picture, String position, String reportsTo) {
+    public EmployeeEntity(Long id, String name, byte[] picture, String position, String reportsTo) {
         this.id = id;
         this.name = name;
         this.picture = picture;
